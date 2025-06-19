@@ -4,7 +4,6 @@
 A full-featured Learning Management System (LMS) built with Node.js, Express, MySQL, and EJS. This platform supports student, lecturer, and admin roles and provides tools for managing courses, content, assignments, and virtual learning — all with a clean, responsive user interface.
 
 ---
-
 ## 🚀 Features
 
 - 👨‍🎓 Multi-role access (Admin, Student, Lecturer)
