@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "OLMS",
+    "password": "Theophilus@123",
+    "database": "olmsdatabase",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "OLMS",
+    "password": "Theophilus@123",
+    "database": "olmsdatabase_test",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "OLMS",
+    "password": "Theophilus@123",
+    "database": "olmsdatabase_prod",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}

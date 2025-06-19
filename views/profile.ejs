@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="/css/profile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <section class="profile-section">
+    <h1><i class="fas fa-user"></i> Profile Page</h1>
+
+    <% if (error) { %>
+      <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+    <% if (success) { %>
+      <div class="alert alert-success"><%= success %></div>
+    <% } %>
+
+    <div class="profile-details">
+      <p><span class="label"><i class="fas fa-id-badge"></i> Name:</span> <%= user ? user.fullname : '' %></p>
+      <p><span class="label"><i class="fas fa-envelope"></i> Email:</span> <%= user ? user.email : '' %></p>
+      <p><span class="label"><i class="fas fa-user-tag"></i> Role:</span> <%= user ? user.role : '' %></p>
+         <p><span class="label"><i class="fas fa-user-id"></i> Id:</span> <%= user ? user.id: '' %></p>
+    </div>
+
+    <div class="profile-update">
+      <h2><i class="fas fa-edit"></i> Update Email and Password</h2>
+      <form action="/api/users/profile/update" method="POST">
+        <div>
+          <label>Email:</label>
+          <input type="email" name="email" value="<%= user.email %>" required>
+        </div>
+        <div>
+          <label>Current Password:</label>
+          <input type="password" name="currentPassword">
+        </div>
+        <div>
+          <label>New Password:</label>
+          <input type="password" name="newPassword">
+        </div>
+        <div>
+          <label>Confirm New Password:</label>
+          <input type="password" name="newPasswordConfirm">
+        </div>
+        <button type="submit"><i class="fas fa-save"></i> Update Profile</button>
+      </form>
+    </div>
+
+    <div class="profile-picture">
+      <h2><i class="fas fa-image"></i> Change Profile Picture</h2>
+      <img src="<%= user.profilePic %>" alt="Profile Picture" width="120">
+      <form action="/api/users/profile/picture" method="POST" enctype="multipart/form-data">
+        <input type="file" name="profilePic" accept="image/*" required>
+        <button type="submit"><i class="fas fa-upload"></i> Upload</button>
+      </form>
+    </div>
+    <a class="back-link" href="/dashboard/student"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+  </section>
+</body>
+</html>

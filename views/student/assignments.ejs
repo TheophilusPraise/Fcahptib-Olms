@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Assignments</title>
+  <link rel="stylesheet" href="/css/simple-assignments.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <section class="assignment-list-section">
+    <h1><i class="fas fa-tasks"></i> My Assignments</h1>
+    <% if (assignments && assignments.length > 0) { %>
+      <ul class="assignment-list">
+        <% assignments.forEach(function(assignment) { %>
+          <li>
+            <a href="/student/assignments/<%= assignment.id %>">
+              <i class="fas fa-file-alt"></i> <%= assignment.title %>
+            </a>
+          </li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p class="no-assignments">You have no assignments yet.</p>
+    <% } %>
+  </section>
+</body>
+</html>

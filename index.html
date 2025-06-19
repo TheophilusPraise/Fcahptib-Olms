@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.IO Chat</title>
+</head>
+<body>
+  <h1>Socket.IO Chat Test</h1>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    socket.on('connect', () => {
+      console.log('Connected with socket id:', socket.id);
+
+      // Join a test group room
+      socket.emit('joinGroup', '123');
+
+      // Send a test message
+      socket.emit('sendMessage', { room: 'group_123', content: 'Hello Group!' });
+    });
+
+    socket.on('newMessage', (msg) => {
+      console.log('New message received:', msg);
+    });
+  </script>
+</body>
+</html>

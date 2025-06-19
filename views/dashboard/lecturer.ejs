@@ -1,0 +1,70 @@
+
+<link rel="stylesheet" href="/css/lecturer-dashboard.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+
+<h1><i class="fas fa-chalkboard-teacher"></i> Welcome, <%= user.name %> (Lecturer)</h1>
+
+<section>
+  <h2><i class="fas fa-book"></i> Courses You Manage</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr><th>Code</th><th>Title</th><th>Category</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      <% courses.forEach(course => { %>
+        <tr>
+          <td><%= course.code %></td>
+          <td><%= course.title %></td>
+          <td><%= course.category %></td>
+          <td><%= course.description %></td>
+          <td><%= new Date(course.start_date).toLocaleDateString() %></td>
+          <td><%= new Date(course.end_date).toLocaleDateString() %></td>
+          <td>
+            <a href="/lecturer/courses/<%= course.id %>/edit" class="btn btn-sm btn-warning">
+              <i class="fas fa-edit"></i> Edit
+            </a>
+            <a href="/lecturer/courses/<%= course.id %>/students" class="btn btn-sm btn-info">
+              <i class="fas fa-users"></i> Students
+            </a>
+          </td>
+        </tr>
+      <% }) %>
+          <a href="/lecturer/courses/new" class="btn btn-primary">Create New Course</a>
+    </tbody>
+
+  </table>
+</section>
+
+<section>
+  <h2><i class="fas fa-tasks"></i> Assignments</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr><th>Title</th><th>Due Date</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <% assignments.forEach(a => { %>
+        <tr>
+          <td><%= a.title %></td>
+          <td><%= new Date(a.due_date).toLocaleDateString() %></td>
+          <td><%= a.description %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2><i class="fas fa-clipboard-list"></i> Lecturer Logs</h2>
+  <ul>
+    <% lecturerLogs.forEach(log => { %>
+      <li><%= new Date(log.timestamp).toLocaleString() %>: <%= log.action %> on <%= log.target_entity %> (ID: <%= log.target_entity_id %>)</li>
+    <% }) %>
+  </ul>
+</section>
+
+<section>
+  <h2><i class="fas fa-comments"></i> Messages</h2>
+  <a href="/lecturer/messages" class="btn btn-primary">
+    <i class="fas fa-comments"></i> Open Messaging
+  </a>
+</section>

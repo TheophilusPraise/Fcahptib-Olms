@@ -1,0 +1,146 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-src https://www.youtube.com/embed/BILIcwWeQbw?si=lGp-C4Od4qS8ErzG;">
+  <title>FCAHPTIB OLMS</title>
+<form action="/" method="get">
+<link rel="stylesheet" href="/css/style.css">
+<nav class="nav-menu" role="navigation" aria-label="Primary Navigation">
+  <% if (!user) { %>
+    <a href="/" class="btn btn-liquid"><H1 class="animate fadeInDown">FCAHPTIB OLMS</H1></a>
+  <% } %>
+</nav>
+</div>
+</header>
+<section class="hero-section" id="hero">
+  <div class="hero-content">
+    <h1 class="animate fadeInDown">Welcome to FCAHPTIB E-Learning Management System</h1>
+    <p class="animate fadeInUp delay-1">
+     Your gateway to seamless learning and teaching experiences —</p>
+    <% if (!user) { %>
+      <a href="/auth/login" class="btn btn-liquid hero-btn animate fadeInUp delay-2">
+        <i class="fas fa-sign-in-alt"></i> Login to Get Started
+      </a>
+    <% } else { %>
+      <a href="/auth/login" class="btn btn-liquid hero-btn animate fadeInUp delay-2">
+        <i class="fas fa-tachometer-alt"></i> Go to Dashboard
+      </a>
+    <% } %>
+  </div>
+</section>
+<section class="users-section" id="users">
+  <h2 class="animate fadeInUp">Our Users</h2>
+  <div class="users-grid">
+    <div class="user-card animate fadeInUp delay-1">
+      <img src="/images/human2.jpg" alt="Student" />
+      <h3>Students</h3>
+      <p>Access courses, submit assignments, track progress, and communicate.</p>
+    </div>
+    <div class="user-card animate fadeInUp delay-2">
+      <img src="/images/human 3.jpg" alt="Lecturer" />
+      <h3>Lecturers</h3>
+      <p>Create courses, manage content, grade students, and analyze performance.</p>
+    </div>
+    <div class="user-card animate fadeInUp delay-3">
+      <img src="/image_1.jpg" alt="Administrator" />
+      <h3>Administrators</h3>
+      <p>Manage users, oversee courses, approve content, and view logs.</p>
+    </div>
+  </div>
+</section>
+<section class="counters" id="counters">
+  <div class="counter-item animate">
+    <div class="counter-number" data-count="18509">0</div>
+    <div class="counter-label">Students Enrolled</div>
+  </div>
+  <div class="counter-item animate delay-1">
+    <div class="counter-number" data-count="120">0</div>
+    <div class="counter-label">Courses Available</div>
+  </div>
+  <div class="counter-item animate delay-2">
+    <div class="counter-number" data-count="100">0</div>
+    <div class="counter-label">Lecturers</div>
+  </div>
+  <div class="counter-item animate delay-3">
+    <div class="counter-number" data-count="64">0</div>
+    <div class="counter-label">Years of Excellence</div>
+  </div>
+</section>
+<section class="reviews-section" id="reviews">
+  <h2 class="animate fadeInUp">What Our Users Say</h2>
+  <div class="reviews-carousel">
+    <div class="review-item">
+      <div class="image-container">
+        <img src="/images/student boy.jpg" alt="Jane Doe, Student" />
+        <div class="overlay">Student</div>
+      </div>
+      <p>"The platform has transformed how I learn. The interactive lessons and quizzes are fantastic!"</p>
+      <h4>– Jane Doe</h4>
+    </div>
+    <div class="review-item">
+      <div class="image-container">
+        <img src="/images/johndoe.jpg" alt="Dr. Smith, Lecturer" />
+        <div class="overlay">Lecturer</div>
+      </div>
+      <p>"Managing courses and grading has never been easier. The analytics help me support my students better."</p>
+      <h4>– Dr. Smith</h4>
+    </div>
+    <div class="review-item">
+      <div class="image-container">
+        <img src="/images/Lecturer.jpg" alt="Mr. Johnson, Administrator" />
+        <div class="overlay">Administrator</div>
+      </div>
+      <p>"The audit logs and user management tools give me full control and confidence in the system."</p>
+      <h4>– Mr. Johnson</h4>
+    </div>
+    <div class="review-item">
+      <div class="image-container">
+        <img src="/images/student.jpg" alt="Emily, Student" />
+        <div class="overlay">Student</div>
+      </div>
+      <p>"The user interface is intuitive and the support team is excellent."</p>
+      <h4>– Emily</h4>
+    </div>
+    <div class="review-item">
+      <div class="image-container">
+        <img src="/images/human 1.jpg" alt="Mark, Lecturer" />
+        <div class="overlay">Lecturer</div>
+      </div>
+      <p>"I love how easy it is to upload course materials and interact with students."</p>
+      <h4>– Mark</h4>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <h2 class="animate fadeInUp">Frequently Asked Questions</h2>
+  <div class="faq-item animate fadeInUp delay-1">
+    <button class="faq-question" aria-expanded="false">How do I enroll in a course? <i class="fas fa-chevron-down"></i></button>
+    <div class="faq-answer" hidden>
+      <p>Students can enroll in courses directly from their dashboard once logged in.</p>
+    </div>
+  </div>
+  <div class="faq-item animate fadeInUp delay-2">
+    <button class="faq-question" aria-expanded="false">Can lecturers upload their own content? <i class="fas fa-chevron-down"></i></button>
+    <div class="faq-answer" hidden>
+      <p>Yes, lecturers have full control over course content and assessments.</p>
+    </div>
+  </div>
+  <div class="faq-item animate fadeInUp delay-3">
+    <button class="faq-question" aria-expanded="false">Is my data secure? <i class="fas fa-chevron-down"></i></button>
+    <div class="faq-answer" hidden>
+      <p>We use robust encryption, bcryptions, sequelized and audit logs to ensure your data privacy and security.</p>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter-section" id="newsletter">
+  <h2 class="animate fadeInUp">Subscribe to Our Newsletter</h2>
+  <form id="newsletterForm" class="animate fadeInUp delay-1">
+    <input type="email" placeholder="Enter your email" aria-label="Email address" required />
+    <button type="submit" class="btn btn-liquid">Subscribe</button>
+  </form>
+</section>
+
+<button id="backToTop" title="Back to top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+</form>

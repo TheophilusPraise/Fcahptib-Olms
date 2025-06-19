@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Course Management</title>
+  <link rel="stylesheet" href="/css/simple-courses.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+ <script src="/js/courses.js"></script>
+</head>
+<body>
+  <% if (user.role === 'student') { %>
+    <!-- STUDENT VIEW -->
+    <section class="course-list-section">
+      <h1><i class="fas fa-book"></i> Available Courses</h1>
+      <% if (availableCourses && availableCourses.length > 0) { %>
+        <ul class="course-list">
+          <% availableCourses.forEach(function(course) { %>
+            <li>
+              <div class="course-header">
+                <i class="fas fa-graduation-cap"></i> 
+                <h3><%= course.name %></h3>
+                <button onclick="showEnrollModal('<%= course.id %>')" class="enroll-btn">
+                  Enroll <i class="fas fa-user-plus"></i>
+                </button>
+              </div>
+              <div class="course-details">
+                <p><strong>Lecturer:</strong> <%= course.lecturerFullname %></p>
+                <p><%= course.description %></p>
+              </div>
+              <!-- Enrollment Modal -->
+              <div id="enroll-modal-<%= course.id %>" class="enroll-modal">
+                <div class="modal-content">
+                  <span class="close" onclick="closeModal('<%= course.id %>')">&times;</span>
+                  <h3>Confirm Enrollment</h3>
+                  <p>Are you sure you want to enroll in <strong><%= course.name %></strong>?</p>
+                  <form action="/enroll/<%= course.id %>" method="POST">
+                    <button type="submit" class="btn confirm-btn">
+                      Yes, Enroll Me
+                    </button>
+                    <button type="button" class="btn cancel-btn" onclick="closeModal('<%= course.id %>')">
+                      Cancel
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        <p class="no-courses">No available courses at this time.</p>
+      <% } %>
+    </section>
+
+    <!-- Enrolled Courses Section -->
+    <section class="course-list-section">
+      <h1><i class="fas fa-bookmark"></i> My Enrolled Courses</h1>
+      <% if (enrolledCourses && enrolledCourses.length > 0) { %>
+        <ul class="course-list">
+          <% enrolledCourses.forEach(function(course) { %>
+            <li>
+              <a href="/student/courses/<%= course.id %>">
+                <i class="fas fa-graduation-cap"></i> <%= course.name %>
+              </a>
+              <span class="lecturer-name">By <%= course.lecturerFullname %></span>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        <p class="no-courses">You are not enrolled in any courses yet.</p>
+      <% } %>
+    </section>
+
+  <% } else if (user.role === 'lecturer') { %>
+    <!-- LECTURER VIEW -->
+    <section class="course-list-section">
+      <h1><i class="fas fa-chalkboard-teacher"></i> My Courses</h1>
+      <% if (courses && courses.length > 0) { %>
+        <ul class="course-list">
+          <% courses.forEach(function(course) { %>
+            <li>
+              <div class="course-header">
+                <i class="fas fa-book-open"></i> 
+                <h3><%= course.name %></h3>
+                <a href="/lecturer/courses/<%= course.id %>/students" class="students-link">
+                  View Students <i class="fas fa-users"></i>
+                </a>
+              </div>
+              <div class="course-details">
+                <p><strong>Enrolled Students:</strong> <%= course.studentCount %></p>
+                <p><%= course.description %></p>
+              </div>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        <p class="no-courses">You haven't created any courses yet.</p>
+      <% } %>
+    </section>
+  <% } %>
+</body>
+</html>

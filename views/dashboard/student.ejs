@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="/css/student-dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+  <main class="container dashboard-main">
+    <section class="dashboard-card">
+      <h2><i class="fas fa-user-graduate"></i>
+        <% if (user) { %>
+          Welcome, <%= user.name %>
+         to your Student Dashboard! Dive into your Comprehensive Performance <br>
+          Analysis and track your Multidimensional Academic Progression <br>
+          as you achieve new milestones every day.
+        <% } else { %>
+          Welcome, Guest
+        <% } %>
+      </h2>
+    </section>
+
+<section class="dashboard-card">
+  <h3><i class="fas fa-book-reader"></i> Enrolled Courses</h3>
+  <div class="table-responsive">
+    <% if (enrolledCourses && enrolledCourses.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Course Title</th>
+            <th>Lecturer</th>
+            <th>Status</th>
+            <th>Grade</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% enrolledCourses.forEach(e => { %>
+            <tr>
+              <td><%= e.name %></td>
+              <td><%= e.lecturerFullname || 'N/A' %></td>
+              <td><%= e.status || 'Enrolled' %></td>
+              <td><%= e.grade || 'N/A' %></td>
+              <td>
+                <a href="/student/courses/<%= e.id %>" class="btn btn-view">
+                  <i class="fas fa-eye"></i> View
+                </a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p class="no-courses">You are not enrolled in any courses yet.</p>
+    <% } %>
+  </div>
+</section>
+
+    <section class="dashboard-card">
+      <h3><i class="fas fa-tasks"></i> Assignments</h3>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Due Date</th>
+              <th>Status</th>
+              <th>Grade</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% assignments.forEach(a => { %>
+              <tr>
+                <td><%= a.title %></td>
+                <td><%= new Date(a.due_date).toLocaleDateString() %></td>
+                <td><%= a.status %></td>
+                <td><%= a.grade || 'Pending' %></td>
+                <td>
+                  <a href="/student/assignments/<%= a.id %>" class="btn btn-primary">
+                    <i class="fas fa-file-alt"></i> View
+                  </a>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="dashboard-card">
+      <h3><i class="fas fa-calendar-check"></i> Attendance</h3>
+      <ul class="simple-list">
+        <% attendance.forEach(a => { %>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            Lesson ID: <%= a.lesson_id %> – Attended at: <%= new Date(a.attended_at).toLocaleString() %>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section class="dashboard-card">
+      <h3><i class="fas fa-certificate"></i> Badges</h3>
+      <ul class="badge-list">
+        <% badges.forEach(badge => { %>
+          <li>
+            <img src="<%= badge.icon_url %>" alt="<%= badge.name %>" width="24" height="24" />
+            <span class="badge-name"><%= badge.name %>:</span>
+            <span class="badge-desc"><%= badge.description %></span>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section class="dashboard-card">
+      <h3><i class="fas fa-envelope"></i> Messages</h3>
+      <ul class="simple-list">
+        <% messages.forEach(msg => { %>
+          <li>
+            <strong>From User <%= msg.sender_id %>:</strong>
+            <%= msg.message %>
+            <span class="msg-date">(<%= new Date(msg.created_at).toLocaleString() %>)</span>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section class="dashboard-card">
+      <h3><i class="fas fa-users"></i> Chat Groups</h3>
+      <ul class="simple-list">
+        <% chatGroups.forEach(group => { %>
+          <li>
+            <strong><%= group.group_name %></strong>: <%= group.description %>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+    
+    <section class="dashboard-card">
+      <h3><i class="fas fa-meet"></i> Meeting</h3>
+      <ul class="simple-list">
+        <% chatGroups.forEach(group => { %>
+          <li>
+            <strong><%= group.group_name %></strong>: <%= group.description %>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

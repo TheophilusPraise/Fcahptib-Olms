@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/css/editcourse.css">
+<h1>Edit Course</h1>
+
+<form action="/lecturer/courses/<%= course.id %>?_method=PUT" method="POST">
+  <div>
+    <label for="title">Course Title</label>
+    <input type="text" id="title" name="title" value="<%= course.title %>" required />
+  </div>
+
+  <div>
+    <label for="code">Course Code</label>
+    <input type="text" id="code" name="code" value="<%= course.code %>" required />
+  </div>
+
+  <div>
+    <label for="description">Description</label>
+    <textarea id="description" name="description"><%= course.description %></textarea>
+  </div>
+
+  <div>
+    <label for="category">Category</label>
+    <input type="text" id="category" name="category" value="<%= course.category %>" />
+  </div>
+
+  <div>
+    <label for="start_date">Start Date</label>
+    <input type="date" id="start_date" name="start_date" value="<%= course.start_date ? course.start_date.toISOString().split('T')[0] : '' %>" />
+  </div>
+
+  <div>
+    <label for="end_date">End Date</label>
+    <input type="date" id="end_date" name="end_date" value="<%= course.end_date ? course.end_date.toISOString().split('T')[0] : '' %>" />
+  </div>
+
+  <button type="submit">Update Course</button>
+</form>

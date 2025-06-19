@@ -1,0 +1,153 @@
+
+.profile-section {
+  max-width: 520px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(44,62,80,0.08);
+  padding: 40px 30px 30px 30px;
+  text-align: center;
+}
+
+.profile-section h1 {
+  color: #0E2148;
+  font-size: 2em;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.alert {
+  padding: 12px;
+  margin-bottom: 18px;
+  border-radius: 5px;
+  font-size: 1em;
+  text-align: center;
+}
+.alert-danger {
+  background: #ffeaea;
+  color: #c0392b;
+  border: 1px solid #e57373;
+}
+.alert-success {
+  background: #eafaf1;
+  color: #1e824c;
+  border: 1px solid #25d366;
+}
+
+.profile-details {
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.profile-details p {
+  font-size: 1.12em;
+  margin: 14px 0;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-details .label {
+  color: #000000;
+  font-weight: bold;
+  margin-right: 10px;
+  min-width: 110px;
+  display: inline-block;
+}
+
+.profile-update, .profile-picture {
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.profile-update h2, .profile-picture h2 {
+  color: black;
+  font-size: 1.15em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-update form div,
+.profile-picture form {
+  margin-bottom: 10px;
+}
+
+.profile-update label {
+  display: inline-block;
+  min-width: 140px;
+  color: #333;
+}
+
+.profile-update input[type="email"],
+.profile-update input[type="password"],
+.profile-picture input[type="file"] {
+  padding: 7px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  margin-top: 4px;
+}
+
+.profile-update button,
+.profile-picture button {
+  background: #0E2148;
+  border: none;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.profile-update button:hover,
+.profile-picture button:hover {
+  background: #000000;
+}
+
+.profile-picture img {
+  border-radius: 60px;
+  margin-bottom: 10px;
+  border: 2px solid #000000;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #075e54;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-link i {
+  margin-right: 6px;
+}
+
+.back-link:hover {
+  color: #000000;
+}
+
+@media (max-width: 600px) {
+  .profile-section {
+    padding: 16px 4vw 16px 4vw;
+    max-width: 99vw;
+  }
+  .profile-details p {
+    font-size: 1em;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .profile-update label {
+    min-width: 100px;
+  }
+}

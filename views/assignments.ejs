@@ -1,0 +1,50 @@
+<section class="login-section">
+<h1><i class="fas fa-tasks"></i> Assignments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Course</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% assignments.forEach(a => { %>
+      <tr>
+        <td><%= a.id %></td>
+        <td><%= a.course_title %></td>
+        <td><%= a.title %></td>
+        <td><%= a.description %></td>
+        <td><%= new Date(a.due_date).toLocaleDateString() %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>Add New Assignment</h2>
+
+<form action="/assignments/add" method="POST">
+  <label for="course_id">Course</label>
+  <select name="course_id" id="course_id" required>
+    <% courses.forEach(course => { %>
+      <option value="<%= course.id %>"><%= course.title %></option>
+    <% }) %>
+  </select>
+
+  <label for="title">Title</label>
+  <input type="text" name="title" id="title" required />
+
+  <label for="description">Description</label>
+  <textarea name="description" id="description" rows="3" required></textarea>
+
+  <label for="due_date">Due Date</label>
+  <input type="date" name="due_date" id="due_date" required />
+
+  <button type="submit"><i class="fas fa-plus-circle"></i> Add Assignment</button>
+</form>
+</section>

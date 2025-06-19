@@ -1,0 +1,20 @@
+<section class="login-section">
+  <title>Chat Groups</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <h1><i class="fas fa-users"></i> Chat Groups</h1>
+  <% if (chatGroups.length === 0) { %>
+    <p>You are not a member of any chat groups.</p>
+  <% } else { %>
+    <ul>
+      <% chatGroups.forEach(group => { %>
+        <li><strong><%= group.group_name %></strong>: <%= group.description %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  <a href="/dashboard/student">Back to Dashboard</a>
+</body>
+</html>
+</section>

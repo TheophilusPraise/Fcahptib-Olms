@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Messaging</title>
+<% if (typeof success !== 'undefined' && success) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/messaging.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <h1>Messaging</h1>
+    <div>
+      Logged in as: <strong><%= user.fullname || user.id %></strong>
+    </div>
+  </header>
+
+
+  <main>
+    <div class="tabs">
+      <div class="tab active" data-tab="private">Private Messages</div>
+      <div class="tab" data-tab="groups">Group Messages</div>
+      <div class="tab" data-tab="manage-groups">Manage Groups</div>
+      <div class="tab" data-tab="meetings">Meetings</div>
+    </div>
+
+    <!-- Private Messages Panel -->
+    <section class="panel" id="private" style="display:block;">
+      <h2>Private Chats</h2>
+      <form id="select-user-form" action="" method="GET" class="user-select-form">
+        <label for="user-select">Select User to Chat:</label>
+        <select id="user-select" name="recipientId" required>
+          <option value="" disabled selected>-- Select User --</option>
+          <% allUsers.forEach(u => { %>
+            <% if(u.id !== user.id) { %>
+              <option value="<%= u.id %>"><%= u.fullname || u.email %></option>
+            <% } %>
+          <% }) %>
+        </select>
+        <button type="submit">Open Chat</button>
+      </form>
+      <ul class="message-list" id="private-messages">
+        <% privateMessages.forEach(msg => { %>
+          <li>
+            <div class="message-content"><strong><%= msg.senderName %>:</strong> <%= msg.content %></div>
+            <div class="message-actions">
+              <form action="/messages/<%= msg.id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" title="Delete message" onclick="return confirm('Delete this message?')"><i class="fas fa-trash"></i></button>
+              </form>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+      <form id="private-message-form" action="/messages/private/send" method="POST">
+        <input type="hidden" name="recipientId" id="private-recipient-id" value="<%= selectedRecipientId || '' %>" />
+        <input type="text" name="content" placeholder="Type a message..." required autocomplete="off" />
+        <button type="submit">Send</button>
+        <div class="voice-video-buttons">
+          <button type="button" title="Send Voice Note"><i class="fas fa-microphone"></i></button>
+          <button type="button" title="Start Video Call"><i class="fas fa-video"></i></button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Group Messages Panel -->
+    <section class="panel" id="groups" style="display:none;">
+      <h2>Group Chats</h2>
+      <ul class="group-list" id="group-list">
+        <% groups.forEach(group => { %>
+          <li data-group-id="<%= group.id %>"><%= group.name %></li>
+        <% }) %>
+      </ul>
+      <ul class="message-list" id="group-messages">
+        <% groupMessages.forEach(msg => { %>
+          <li>
+            <div class="message-content"><strong><%= msg.senderName %>:</strong> <%= msg.content %></div>
+            <div class="message-actions">
+              <form action="/messages/<%= msg.id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" title="Delete message" onclick="return confirm('Delete this message?')"><i class="fas fa-trash"></i></button>
+              </form>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+      <form id="group-message-form" action="/messages/group/send" method="POST">
+        <input type="hidden" name="groupId" id="group-id" value="" />
+        <input type="text" name="content" placeholder="Type a message..." required autocomplete="off" />
+        <button type="submit">Send</button>
+        <div class="voice-video-buttons">
+          <button type="button" title="Send Voice Note"><i class="fas fa-microphone"></i></button>
+          <button type="button" title="Start Video Call"><i class="fas fa-video"></i></button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Manage Groups Panel -->
+    <section class="panel" id="manage-groups" style="display:none;">
+      <h2>Manage Groups</h2>
+      <form action="/groups/create" method="POST">
+        <input type="text" name="groupName" placeholder="New Group Name" required />
+        <input type="text" name="courseId" placeholder="Course ID" required/>
+        <button type="submit">Create Group</button>
+      </form>
+      <ul class="group-list" id="manage-group-list">
+        <% groups.forEach(group => { %>
+          <li>
+            <strong><%= group.name %></strong>
+            <form action="/groups/<%= group.id %>?_method=DELETE" method="POST" style="display:inline;">
+              <button type="submit" onclick="return confirm('Delete this group?')">Delete Group</button>
+            </form>
+            <ul>
+              <% group.members.forEach(member => { %>
+                <li>
+                  <%= member.name %> (<%= member.matricNo %>)
+                  <form action="/groups/<%= group.id %>/members/<%= member.id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Remove this student from group?')">Remove</button>
+                  </form>
+                </li>
+              <% }) %>
+            </ul>
+            <form action="/groups/<%= group.id %>/members" method="POST">
+              <input type="text" name="search" placeholder="Matric No or Email" required />
+              <button type="submit">Add Student</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <!-- Meetings Panel -->
+    <section class="panel" id="meetings" style="display:none;">
+      <h2>Virtual Classroom</h2>
+      <form action="/meetings/create" method="POST" class="mb-4">
+        <input type="text" name="name" placeholder="Meeting Name" required />
+        <input type="number" name="duration" value="60" min="15" max="480" required />
+        <button type="submit" class="btn btn-primary">Create Meeting</button>
+      </form>
+      <% if (meetings && meetings.length > 0) { %>
+        <div class="meetings-list">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Meeting Name</th>
+                <th>Scheduled Time</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% meetings.forEach(m => { %>
+                <tr>
+                  <td><%= m.name %></td>
+                  <td><%= m.createdAt.toLocaleString() %></td>
+                  <td>
+                    <a href="/meetings/join?id=<%= m.id %>&role=moderator" class="btn btn-success btn-sm" target="_blank">
+                      Start Class
+                    </a>
+                   <a href="/meetings/join?id=<%= m.id %>&role=attendee" class="btn btn-info btn-sm" target="_blank">
+                   Join Meeting
+                   </a>
+                    </form>
+                  </td>
+                </tr>
+         <div id="bbb-iframe-container" style="display:none; margin-top:20px;"></div>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } else { %>
+        <p class="no-meetings">No upcoming meetings found.</p>
+      <% } %>
+    </section>
+  </main>
+  <script src="/js/messages.js"></script>
+</body>
+</html>

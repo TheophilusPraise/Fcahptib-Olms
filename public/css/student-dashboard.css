@@ -1,0 +1,193 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+body {
+  margin: 0;
+  padding: 0;
+   font-family: "Inter", sans-serif;
+  color: #1A4870;      /* Use your slate blue for text */
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  background: #0E2148; /* Use your requested dark blue */
+  color: #F9DBBA;      /* Use your peach for text */
+  padding: 32px 0 18px 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(14, 33, 72, 0.07);
+}
+
+.dashboard-header h1 {
+  font-size: 2.1em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Dashboard Main Content */
+.dashboard-main {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+/* Dashboard Card */
+.dashboard-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(14, 33, 72, 0.08);
+  padding: 28px 24px 22px 24px;
+  min-width: 320px;
+  flex: 1 1 420px;
+  margin-bottom: 12px;
+}
+
+.dashboard-card h2 {
+  color: #5B99C2;      /* Sky blue for card headings */
+  font-size: 1.25em;
+  margin-top: 0;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Tables */
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+th, td {
+  padding: 10px 8px;
+  text-align: left;
+}
+
+th {
+  background: #1F316F; /* Deep blue for table headers */
+  color: #F9DBBA;      /* Peach for text */
+  font-weight: 600;
+  font-size: 1.05em;
+}
+
+tr:nth-child(even) {
+  background: #eafaf1; /* Light green for even rows (keep or adjust to your palette) */
+}
+
+tr:nth-child(odd) {
+  background: #fff;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.97em;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.btn-view {
+  background: #eafaf1;
+  color: #075e54;
+  border: 1px solid #25d366;
+}
+
+.btn-view:hover {
+  background: #25d366;
+  color: #fff;
+}
+
+.btn-primary {
+  background: #5B99C2; /* Sky blue for primary button */
+  color: #1F316F;      /* Deep blue for text */
+  border: none;
+  width: fit-content;
+}
+
+.btn-primary:hover {
+  background: #1A4870; /* Slate blue for hover */
+  color: #F9DBBA;      /* Peach for text */
+}
+
+/* Lists */
+.simple-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.simple-list li {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.badge-list li {
+  background: #eafaf1;
+  border-radius: 7px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1em;
+}
+
+.badge-name {
+  font-weight: 600;
+  color: #25d366;
+}
+
+.badge-desc {
+  color: #666;
+  font-size: 0.97em;
+}
+
+.msg-date {
+  color: #888;
+  font-size: 0.93em;
+  margin-left: 8px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .dashboard-main {
+    flex-direction: column;
+    gap: 14px;
+    padding: 0 2vw;
+  }
+  .dashboard-card {
+    min-width: 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,79 @@
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #ece5dd;
+  margin: 0;
+  padding: 0;
+}
+.message-form-container {
+  background: #f7f7f7;
+  padding: 24px 18px 14px 18px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.message-form-container form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.message-form-container label {
+  font-size: 1em;
+  color: #075e54;
+  margin-right: 4px;
+}
+.message-form-container select,
+.message-form-container textarea {
+  font-size: 1em;
+  padding: 7px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s;
+}
+.message-form-container select:focus,
+.message-form-container textarea:focus {
+  border: 1.5px solid #25d366;
+}
+.message-form-container select {
+  min-width: 130px;
+  background: #fff;
+}
+.message-form-container textarea {
+  flex: 1 1 200px;
+  resize: none;
+  min-height: 36px;
+  max-height: 90px;
+  background: #fff;
+}
+.message-form-container button {
+  background: #25d366;
+  border: none;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.message-form-container button:hover {
+  background: #128c7e;
+}
+@media (max-width: 600px) {
+  .message-form-container {
+    max-width: 100vw;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+  .message-form-container form {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .message-form-container textarea {
+    min-width: 100%;
+  }
+}

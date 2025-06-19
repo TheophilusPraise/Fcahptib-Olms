@@ -1,0 +1,62 @@
+
+<section class="dashboard-header">
+  <h1>Admin Dashboard</h1>
+  <p>Welcome, <%= user.fullname %>!</p>
+</section>
+
+<section class="dashboard-stats">
+  <div class="stat-card">
+    <h3><%= stats.totalUsers %></h3>
+    <p>Total Users</p>
+  </div>
+  <div class="stat-card">
+    <h3><%= stats.totalStudents %></h3>
+    <p>Students</p>
+  </div>
+  <div class="stat-card">
+    <h3><%= stats.totalLecturers %></h3>
+    <p>Lecturers</p>
+  </div>
+  <div class="stat-card">
+    <h3><%= stats.totalCourses %></h3>
+    <p>Courses</p>
+  </div>
+  <div class="stat-card">
+    <h3><%= stats.openCourses %></h3>
+    <p>Open Courses</p>
+  </div>
+</section>
+
+<section class="dashboard-logs">
+  <h2>Recent Admin Activity</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Admin</th>
+        <th>Action</th>
+        <th>Target</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% recentLogs.forEach(log => { %>
+        <tr>
+          <td><%= log.adminUser.fullname %> (<%= log.adminUser.email %>)</td>
+          <td><%= log.action %></td>
+          <td><%= log.target_entity %> (ID: <%= log.target_entity_id %>)</td>
+          <td><%= new Date(log.timestamp).toLocaleString() %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+
+<section class="dashboard-actions">
+  <h2>Quick Actions</h2>
+  <div class="actions-grid">
+    <a href="/admin/users" class="btn btn-liquid">Manage Users</a>
+    <a href="/admin/courses" class="btn btn-liquid">Manage Courses</a>
+    <a href="/admin/logs" class="btn btn-liquid">View Logs</a>
+    <a href="/admin/badges" class="btn btn-liquid">Manage Badges</a>
+  </div>
+</section>

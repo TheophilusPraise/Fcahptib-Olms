@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create New Group for Course <%= courseId %></title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <h1>Create New Group for Course <%= courseId %></h1>
+  <form action="/lecturer/courses/<%= courseId %>/groups" method="POST">
+    <label for="name">Group Name</label>
+    <input type="text" id="name" name="name" required />
+    <button type="submit">Create Group</button>
+  </form>
+  <a href="/lecturer/courses/<%= courseId %>/groups">Back to Groups</a>
+</body>
+</html>

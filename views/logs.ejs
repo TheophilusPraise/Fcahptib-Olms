@@ -1,0 +1,26 @@
+<% layout('layouts/main') %>
+
+<h1><i class="fas fa-clipboard-list"></i> Admin Logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User ID</th>
+      <th>Action</th>
+      <th>Details</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% logs.forEach(log => { %>
+      <tr>
+        <td><%= log.id %></td>
+        <td><%= log.userId %></td>
+        <td><%= log.action %></td>
+        <td><%= log.details %></td>
+        <td><%= new Date(log.timestamp).toLocaleString() %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

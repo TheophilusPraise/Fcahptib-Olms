@@ -1,0 +1,58 @@
+<section class="register-section">
+  <h2>Register</h2>
+  <% if (successMessage) { %>
+  <div class="alert">
+    <%= successMessage %>
+  </div>
+<% } %>
+
+<% if (error && error.length > 0) { %>
+  <div class="alert">
+    <%= error.join(', ') %>
+  </div>
+<% } %>
+
+  <form action="/auth/register" method="POST" autocomplete="off" novalidate>
+         <p>Id are the only Pass to your Account <br>
+        Please Note your Id Down wont be recovered if lost only passwords are be guranteed</p>
+    <div class="form-group">
+      <input type="text" id="fullname" name="fullname" placeholder=" " required value="<%= typeof fullname !== 'undefined' ? fullname : '' %>" />
+      <label for="fullname">Full Name</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" id="id" name="id" placeholder=" " required value="<%= typeof id !== 'undefined' ? id : '' %>" />
+      <label for="id">Matric Number / Staff ID / Admin ID</label>
+    </div>
+
+    <div class="form-group">
+      <input type="email" id="email" name="email" placeholder=" " required value="<%= typeof email !== 'undefined' ? email : '' %>" />
+      <label for="email">Email</label>
+    </div>
+
+    <div class="form-group">
+      <select id="role" name="role" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="student" <%= role === 'student' ? 'selected' : '' %>>Student</option>
+        <option value="lecturer" <%= role === 'lecturer' ? 'selected' : '' %>>Lecturer</option>
+        <option value="admin" <%= role === 'admin' ? 'selected' : '' %>>Admin</option>
+      </select>
+      <label for="role">Role</label>
+    </div>
+
+    <div class="form-group">
+      <input type="password" id="password" name="password" placeholder=" " required />
+      <label for="password">Password</label>
+    </div>
+
+    <div class="form-group">
+      <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder=" " required />
+      <label for="passwordConfirm">Confirm Password</label>
+    </div>
+
+    <button type="submit" class="btn-primary">
+      <i class="fas fa-user-plus"></i> Register
+    </button>
+  </form>
+  <p>Already have an account? <a href="/auth/login">Sign in</a>.</p>
+</section>

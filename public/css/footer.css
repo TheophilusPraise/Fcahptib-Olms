@@ -1,0 +1,108 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.site-footer {
+  background-color: #0E2148; /* Deep navy */
+  color: #E3D095; /* Gold accent for text */
+  padding: 40px 20px 20px 20px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 0.95rem;
+  border-top: 3px solid #7965C1; /* Lavender accent border */
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-column {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-weight: 700;
+  margin-bottom: 18px;
+  font-size: 1.15rem;
+  color: #E3D095; /* Gold accent */
+  border-bottom: 2px solid #7965C1; /* Lavender underline */
+  padding-bottom: 6px;
+}
+
+.footer-column p,
+.footer-column ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #E3D095CC; /* Gold, slightly transparent */
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #E3D095CC; /* Gold links */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover,
+.footer-column ul li a:focus {
+  color: #7965C1; /* Lavender on hover */
+  outline: none;
+}
+
+.footer-logo img {
+  max-width: 140px;
+  margin-bottom: 15px;
+  user-select: none;
+}
+
+.social-column .social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #483AA0; /* Purple for icon background */
+  color: #E3D095; /* Gold for icon */
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  background: #7965C1; /* Lavender on hover */
+  color: #0E2148; /* Deep navy text on hover */
+  outline: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #7965C199; /* Semi-transparent lavender */
+  padding-top: 12px;
+  font-size: 0.9rem;
+  color: #E3D095CC;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer-column {
+    min-width: 100%;
+  }
+}

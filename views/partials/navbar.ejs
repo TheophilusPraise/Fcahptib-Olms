@@ -1,0 +1,124 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/navbar.css">
+<header class="header">
+  <div class="container header-container">
+    <a href="/" class="logo-link" aria-label="FCAHPTIB Home">
+      <img src="/favicon.ico" alt="FCAHPTIB Logo" class="logo" />
+    </a>
+<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
+  <i class="fas fa-bars"></i>
+</button>
+
+    <% if (user) { %>
+      <nav aria-label="Primary navigation">
+        <ul class="navbar-menu">
+          <li>
+            <a href="/dashboard" aria-current="<%= (activePage === 'dashboard') ? 'page' : undefined %>">
+              <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+          </li>
+
+          <% if (user.role === 'admin') { %>
+            <li>
+              <a href="/admin/users" aria-current="<%= (activePage === 'admin-users') ? 'page' : undefined %>">
+                <i class="fas fa-users"></i> User Management
+              </a>
+            </li>
+            <li>
+              <a href="/admin/logs" aria-current="<%= (activePage === 'admin-logs') ? 'page' : undefined %>">
+                <i class="fas fa-clipboard-list"></i> Logs
+              </a>
+            </li>
+                   <li>
+              <a href="/lecturer/messages" aria-current="<%= (activePage === 'lecturer-messages') ? 'page' : undefined %>">
+                <i class="fas fa-comments"></i> Messages
+              </a>
+            </li>
+            <li>
+              <a href="/admin/courses" aria-current="<%= (activePage === 'admin-courses') ? 'page' : undefined %>">
+                <i class="fas fa-book"></i> Courses
+              </a>
+            </li>
+          <% } %>
+
+          <% if (user.role === 'lecturer') { %>
+            <li>
+              <a href="/lecturer/courses" aria-current="<%= (activePage === 'lecturer-courses') ? 'page' : undefined %>">
+                <i class="fas fa-book"></i> My Courses
+              </a>
+            </li>
+            <li>
+              <a href="/lecturer/assignments" aria-current="<%= (activePage === 'lecturer-assignments') ? 'page' : undefined %>">
+                <i class="fas fa-tasks"></i> Assignments
+              </a>
+            </li>
+            <li>
+              <a href="/lecturer/messages" aria-current="<%= (activePage === 'lecturer-messages') ? 'page' : undefined %>">
+                <i class="fas fa-comments"></i> Messages
+              </a>
+            </li>
+            <li>
+</li>
+
+          <% } %>
+
+          <% if (user.role === 'student') { %>
+            <li>
+              <a href="/student/courses" aria-current="<%= (activePage === 'student-courses') ? 'page' : undefined %>">
+                <i class="fas fa-book-reader"></i> My Courses
+              </a>
+            </li>
+            <li>
+              <a href="/student/assignments" aria-current="<%= (activePage === 'student-assignments') ? 'page' : undefined %>">
+                <i class="fas fa-tasks"></i> Assignments
+              </a>
+            </li>
+            <li>
+              <a href="/student/messages" aria-current="<%= (activePage === 'student-messages') ? 'page' : undefined %>">
+                <i class="fas fa-comments"></i> Messages
+              </a>
+            </li>
+            <li>
+              <a href="/student/certificates" aria-current="<%= (activePage === 'student-certificates') ? 'page' : undefined %>">
+                <i class="fas fa-certificate"></i> Certificates
+              </a>
+            </li>
+          <% } %>
+
+          <li>
+            <a href="/profile" aria-current="<%= (activePage === 'profile') ? 'page' : undefined %>">
+              <i class="fas fa-user-cog"></i> Profile
+            </a>
+          </li>
+          <li>
+            <a href="/auth/logout">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </nav>
+    <% } else { %>
+      <nav aria-label="Primary navigation">
+        <ul class="navbar-menu">
+          <li>
+            <a href="/" aria-current="<%= (activePage === 'home') ? 'page' : undefined %>">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li>
+            <a href="/auth/login" aria-current="<%= (activePage === 'login') ? 'page' : undefined %>">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+          </li>
+          <li>
+            <a href="/auth/register" aria-current="<%= (activePage === 'register') ? 'page' : undefined %>">
+              <i class="fas fa-user-plus"></i> Register
+            </a>
+          </li>
+        </ul>
+      </nav>
+    <% } %>
+  </div>
+</header>
+<script src="/js/navbar.js"></script>

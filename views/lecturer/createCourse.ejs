@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/css/coursenew.css">
+<h1>Create New Course</h1>
+<form action="/lecturer/courses" method="POST">
+  <div>
+    <label for="title">Course Title</label>
+    <input type="text" id="title" name="title" required />
+  </div>
+
+  <div>
+    <label for="code">Course Code</label>
+    <input type="text" id="code" name="code" required />
+  </div>
+
+  <div>
+    <label for="description">Description</label>
+    <textarea id="description" name="description"></textarea>
+  </div>
+
+  <div>
+    <label for="category">Category</label>
+    <input type="text" id="category" name="category" />
+  </div>
+
+  <div>
+    <label for="start_date">Start Date</label>
+    <input type="date" id="start_date" name="start_date" />
+  </div>
+
+  <div>
+    <label for="end_date">End Date</label>
+    <input type="date" id="end_date" name="end_date" />
+  </div>
+
+  <button type="submit">Create Course</button>
+</form>
